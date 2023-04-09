@@ -9,14 +9,14 @@ public class test {
 
         FileInputStream fileInputStream = new FileInputStream("a.txt");
 
-        byte[] bytes = new byte[4];
+        byte[] bytes = new byte[1024];
         fileInputStream.read(bytes);
         String s = new String(bytes);
         System.out.println(s);
-//        int len;
-//        while ((len = fileInputStream.read())!=-1){
-//            System.out.println((char) len);
-//        }
+        int len;
+        while ((len = fileInputStream.read())!=-1){
+            System.out.println((char) len);
+        }
 
         fileInputStream.close();
     }
