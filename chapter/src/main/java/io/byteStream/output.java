@@ -1,10 +1,10 @@
-package io;
+package io.byteStream;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class test {
+public class output {
 
     public static void main(String[] args) throws IOException {
 
@@ -18,16 +18,16 @@ public class test {
         fileOutputStream.write(str.getBytes());
         fileOutputStream.close();
 
-        FileInputStream fileInputStream = new FileInputStream("b.txt");
-
-        long size = fileInputStream.getChannel().size();
-
-        int b;
-        while ((b = fileInputStream.read()) != -1) {
-            System.out.println((char) b);
-
-        }
-        fileInputStream.close();
+//        FileInputStream fileInputStream = new FileInputStream("b.txt");
+//
+//        long size = fileInputStream.getChannel().size();
+//
+//        int b;
+//        while ((b = fileInputStream.read()) != -1) {
+//            System.out.println((char) b);
+//
+//        }
+//        fileInputStream.close();
 //        System.out.println(size);
 
 
