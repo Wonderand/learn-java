@@ -8,9 +8,9 @@ public class test {
 
     public static void main(String[] args) throws IOException {
 
-        FileOutputStream fileOutputStream = new FileOutputStream("a.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream("b.txt");
 
-        String str = "abc    \n666";
+        String str = " git rm --cached -r filepath";
 
 
         //byte[] bytes = {97, 98, 99, 100, 101, 102, 103};
