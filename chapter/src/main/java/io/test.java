@@ -18,7 +18,7 @@ public class test {
         fileOutputStream.write(str.getBytes());
         fileOutputStream.close();
 
-        FileInputStream fileInputStream = new FileInputStream("a.txt");
+        FileInputStream fileInputStream = new FileInputStream("b.txt");
 
         long size = fileInputStream.getChannel().size();
 
