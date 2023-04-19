@@ -19,13 +19,15 @@ public class copy {
                 fileInputStream.read(bytes);
                 fileOutputStream.write(bytes, 0, bytes.length);
             }
-//        String str = new String(bytes);
-//        fileOutputStream.write(str.getBytes());
-            //一次读取一个
-//        int index;
-//        while ((index= fileInputStream.read(bytes))!=-1){
-//            fileOutputStream.write(index);
-//        }
+/*
+        String str = new String(bytes);
+        fileOutputStream.write(str.getBytes());
+一次读取一个
+        int index;
+        while ((index= fileInputStream.read(bytes))!=-1){
+            fileOutputStream.write(index);
+        }
+*/
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
