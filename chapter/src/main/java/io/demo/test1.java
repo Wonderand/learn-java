@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -17,30 +18,43 @@ public class test1 {
         FileReader fileReader = new FileReader("d.txt");
         StringBuilder builder = new StringBuilder();
         int len;
-        while ((len = fileReader.read())!=-1){
+        while ((len = fileReader.read()) != -1) {
             builder.append((char) len);
         }
         fileReader.close();
         System.out.println(builder.toString());
         //2.排序
-        ArrayList<Integer> list = new ArrayList<>();
-        String string = builder.toString();
-        String[] arrStr = string.split("-");
-        for (String s : arrStr) {
-            int i = Integer.parseInt(s);
-            list.add(i);
-        }
-        Collections.sort(list);
-        System.out.println(list);
+        Integer[] array = Arrays.stream(builder.toString()
+                        .split("-"))
+                .map(Integer::parseInt)
+                .sorted()
+                .toArray(Integer[]::new);
+        System.out.println(Arrays.toString(array));
+//        ArrayList<Integer> list = new ArrayList<>();
+//        String string = builder.toString();
+//        String[] arrStr = string.split("-");
+//        for (String s : arrStr) {
+//            int i = Integer.parseInt(s);
+//            list.add(i);
+//        }
+//        Collections.sort(list);
+//        System.out.println(list);
         //3.写入文件
         FileWriter fileWriter = new FileWriter("e.txt");
-        for (int i = 0; i < list.size(); i++) {
-            if (i==list.size()-1){
-                fileWriter.write(list.get(i)+"");
-            }else {
-                fileWriter.write(list.get(i)+"-");
-            }
-        }
+//        for (int i = 0; i < list.size(); i++) {
+//            if (i==list.size()-1){
+//                fileWriter.write(list.get(i)+"");
+//            }else {
+//                fileWriter.write(list.get(i)+"-");
+//            }
+//        }
+        String str = Arrays.toString(array);
+        String replace = str.replace(", ", "-");
+        String res = replace.substring(1, replace.length() - 1);
+//        str.replace("[", "");
+//        str.replace("]", "");
+        System.out.println(res);
+        fileWriter.write(res);
         fileWriter.close();
     }
 }
