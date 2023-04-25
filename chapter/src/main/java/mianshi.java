@@ -4,9 +4,7 @@ public class mianshi {
     public static void main(String[] args) {
 
         //splitNumber(12345);
-
         int thisIsAWord = findLongestWord("this is a word");
-//        String s = "this is a word";
         System.out.println(thisIsAWord);
     }
     //将正整数的每一位拆分出来,不调用方法
@@ -42,4 +40,18 @@ public class mianshi {
         }
         return maxLength;
     }
+    //现在有三张mysql表，用户表：用户ID、用户姓名。收入表：用户ID、收入金额。订单表：用户ID、订单金额。用子查询统计出用户姓名，总订单金额，总收入金额
+    //select a.name,sum(b.money),sum(c.money)
+    //from user a,
+    //(select user_id,sum(money) as money from order group by user_id) b,
+    //(select user_id,sum(money) as money from income group by user_id)c
+    //where a.id=b.user_id and a.id=c.user_id group by a.id;
+
+    /**
+     * SELECT u.user_name AS 用户名, SUM(o.amount) AS 总订单金额, SUM(s.income) AS 总收入金额
+     * FROM `user` u
+     * LEFT JOIN `order` o ON u.id = o.user_id
+     * LEFT JOIN `income` s ON u.id = s.user_id
+     * GROUP BY u.id;
+     */
 }
