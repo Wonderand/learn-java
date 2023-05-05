@@ -1,4 +1,4 @@
-package com.huzhirong.top.ssm.common.config;
+package com.huzhirong.top.common.config;
 
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 

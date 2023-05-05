@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--命名空间应该是对应接口的包名+接口名 -->
-<mapper namespace="com.huzhirong.top.ssm.modules.test.mapper.UserMapper">
-    <select id="find" parameterType="com.huzhirong.top.ssm.modules.test.pojo.User" resultType="com.huzhirong.top.ssm.modules.test.pojo.User">
+<mapper namespace="com.huzhirong.top.modules.test.mapper.UserMapper">
+    <select id="find" parameterType="com.huzhirong.top.modules.test.pojo.User" resultType="com.huzhirong.top.modules.test.pojo.User">
        select * from user
     </select>
-    <select id="getUserById" resultType="com.huzhirong.top.ssm.modules.test.pojo.User">
+    <select id="getUserById" resultType="com.huzhirong.top.modules.test.pojo.User">
         select * from user where id=#{id}
     </select>
     <insert id="save">

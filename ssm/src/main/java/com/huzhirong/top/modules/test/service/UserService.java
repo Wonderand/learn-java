@@ -1,6 +1,6 @@
-package com.huzhirong.top.ssm.modules.test.service;
+package com.huzhirong.top.modules.test.service;
 
-import com.huzhirong.top.ssm.modules.test.pojo.User;
+import com.huzhirong.top.modules.test.pojo.User;
 
 import java.util.List;
 

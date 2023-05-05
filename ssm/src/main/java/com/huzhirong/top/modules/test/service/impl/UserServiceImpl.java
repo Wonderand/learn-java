@@ -1,8 +1,8 @@
-package com.huzhirong.top.ssm.modules.test.service.impl;
+package com.huzhirong.top.modules.test.service.impl;
 
-import com.huzhirong.top.ssm.modules.test.mapper.UserMapper;
-import com.huzhirong.top.ssm.modules.test.pojo.User;
-import com.huzhirong.top.ssm.modules.test.service.UserService;
+import com.huzhirong.top.modules.test.mapper.UserMapper;
+import com.huzhirong.top.modules.test.pojo.User;
+import com.huzhirong.top.modules.test.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

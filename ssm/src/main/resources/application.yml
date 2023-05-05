@@ -19,16 +19,13 @@ spring:
     minEvictableIdleTimeMillis: 300000
 mybatis:
   # 配置XML映射文件中指定的实体类别名路径
-  type-aliases-package: com.huzhirong.top.ssm.module.*.pojo
+  type-aliases-package: com.huzhirong.top.module.*.pojo
   # 配置MyBatis的xml配置文件路径
   mapper-locations: classpath:mappers/*.xml
 
-# 配置日志
-logging:
-  level:
-    com:
-      huzhirong:
-        top:
-          ssm:
-            module:
-              mapper: debug
+#redis
+redis:
+  host: localhost
+  port: 6379
+  password:
+  database: 0
