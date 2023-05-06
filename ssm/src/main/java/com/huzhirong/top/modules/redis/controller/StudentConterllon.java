@@ -1,11 +1,14 @@
 package com.huzhirong.top.modules.redis.controller;
 
+import com.huzhirong.top.RunApplication;
 import com.huzhirong.top.common.utils.R;
 import com.huzhirong.top.modules.redis.entity.Student;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/redis")

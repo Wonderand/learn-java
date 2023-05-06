@@ -22,7 +22,8 @@ mybatis:
   type-aliases-package: com.huzhirong.top.module.*.pojo
   # 配置MyBatis的xml配置文件路径
   mapper-locations: classpath:mappers/*.xml
-
+  configuration:
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
 #redis
 redis:
   host: localhost
