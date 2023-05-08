@@ -11,5 +11,6 @@ public interface UserService {
     public void update(User u);
     public void delete(int id);
     public List<User> find();
+    public User login(User user);
     public User getUserById(int id);
 }

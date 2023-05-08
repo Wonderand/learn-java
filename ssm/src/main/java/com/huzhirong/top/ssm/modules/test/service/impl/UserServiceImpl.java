@@ -49,4 +49,9 @@ public class UserServiceImpl implements UserService {
     public User getUserById(int id) {
         return null;
     }
+
+    @Override
+    public User login(User user) {
+        return dao.login(user);
+    }
 }
