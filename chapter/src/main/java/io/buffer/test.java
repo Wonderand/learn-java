@@ -17,6 +17,5 @@ public class test {
         //释放资源
         bos.close();
         bis.close();
-
     }
 }
