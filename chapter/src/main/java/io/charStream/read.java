@@ -12,7 +12,6 @@ public class read {
         char[] chars = new char[2];
         int ch;
         while ((ch=fileReader.read(chars))!=-1){
-
             System.out.print(new String(chars,0,ch));
         }
 
