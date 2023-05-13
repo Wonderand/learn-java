@@ -34,6 +34,11 @@
             <artifactId>itextpdf</artifactId>
             <version>5.5.8</version>
         </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.68</version>
+        </dependency>
     </dependencies>
 
 
