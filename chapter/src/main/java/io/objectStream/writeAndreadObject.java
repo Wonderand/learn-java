@@ -1,12 +1,17 @@
-package io.prot;
+package io.objectStream;
 
-import io.prot.pojo.Person;
+import io.objectStream.pojo.Person;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * 序列化和反序列化
+ * 对象实现Serializable接口
+ * 方便对对象进行持久化存储
+ */
 public class writeAndreadObject {
     public static void main(String[] args) throws Exception {
         readobj();

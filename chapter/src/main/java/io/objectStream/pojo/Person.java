@@ -1,4 +1,4 @@
-package io.prot.pojo;
+package io.objectStream.pojo;
 
 import java.io.Serializable;
 

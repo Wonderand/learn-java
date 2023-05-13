@@ -1,4 +1,4 @@
-package io.prot;
+package io.objectStream;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -7,9 +7,10 @@ import java.util.Properties;
 /**
  * Properties是唯一一个可以和IO流结合使用的集合类
  */
-public class test {
+public class PropertiesTest {
     public static void main(String[] args) throws Exception{
-        wrfile();
+        //wrfile();
+        refile();
     }
     /**
      * Properties集合的store方法
