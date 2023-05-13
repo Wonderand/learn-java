@@ -9,7 +9,7 @@ public class ReadCharBuffer {
     public static void main(String[] args) throws IOException {
 
         //1.创建字符缓冲输入流对象
-        BufferedReader br = new BufferedReader(new FileReader("a.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("demofile//a.txt"));
         //读取数据
 //        String s = br.readLine();
 //        System.out.println(s);

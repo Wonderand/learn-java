@@ -1,9 +1,6 @@
 package io.buffer;
 
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class WriteCharBuffer {
     public static void main(String[] args) throws IOException {

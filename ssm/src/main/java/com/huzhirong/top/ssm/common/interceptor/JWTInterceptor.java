@@ -18,6 +18,8 @@ public class JWTInterceptor implements HandlerInterceptor {
         // 校验令牌
         try {
             JWTUtils.verify(token);
+            response.setStatus(200);
+            response.setContentType("application/json;charset=UTF-8");
 //            response.getWriter().println(R.ok().put("msg", "请求成功"));
             return true;
         } catch (SignatureVerificationException e) {
