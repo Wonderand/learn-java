@@ -13,7 +13,7 @@ import java.math.MathContext;
 public class test {
 
     public static void main(String[] args) {
-        String url = "E:\\jdk17\\test\\demofile\\4.mp4";
+        String url = "E:\\VMware\\UbuntuISO\\ubuntu-22.04.2-desktop-amd64.iso";
         String size = getSize(new File(url));
         System.out.println(size);
 //        try {
@@ -44,7 +44,8 @@ public class test {
         }
     }
     /**
-     *
+     * 普通的pdf
+     * @param ops
      */
     public static void pdftest(FileOutputStream ops){
 
