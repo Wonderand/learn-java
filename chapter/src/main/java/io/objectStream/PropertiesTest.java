@@ -10,20 +10,21 @@ import java.util.Properties;
 public class PropertiesTest {
     public static void main(String[] args) throws Exception{
         //wrfile();
-        refile();
+//        refile();
     }
     /**
-     * Properties集合的store方法
+     * Properties集合的load方法
      *  传递任意的字节或者字符输入流
      *  流对象读取文件中的键值对,保存到集合
      * @throws Exception
      */
-    public static void refile() throws Exception{
-        FileReader fr = new FileReader("E:\\jdk17\\test\\chapter\\src\\main\\resources\\a.txt");
+    public static Properties refile(FileReader fr) throws Exception{
+       // FileReader fr = new FileReader("E:\\jdk17\\test\\chapter\\src\\main\\resources\\a.txt");
         Properties pro = new Properties();
         pro.load(fr);
         fr.close();
         System.out.println(pro);
+        return pro;
     }
     /**
      * Properties集合的store方法
