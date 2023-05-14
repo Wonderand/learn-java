@@ -7,4 +7,7 @@ public class Cat {
     public void hi() {
         System.out.println("hi"+name);
     }
+    public void eat() {
+        System.out.println("eat"+name);
+    }
 }
