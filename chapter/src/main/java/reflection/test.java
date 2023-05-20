@@ -1,10 +1,7 @@
 package reflection;
 
 import io.objectStream.PropertiesTest;
-import reflection.pojo.Cat;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.util.Properties;
@@ -35,6 +32,7 @@ public class test {
             //执行方法
             method.invoke(o);
 
+            fr.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
