@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <audio id="audio" controls></audio>
+</body>
+<script>
+
+    const startButton = document.getElementById('start');
+    const stopButton = document.getElementById('stop');
+    const audioElement = document.getElementById('audio');
+
+    let mediaRecorder;
+    let recordedChunks = [];
+
+    startButton.onclick = async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({audio: true});
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.addEventListener('dataavailable', (event) => {
+                if (typeof event.data === 'undefined') return;
+                if (event.data.size === 0) return;
+                recordedChunks.push(event.data);
+            });
+            mediaRecorder.addEventListener('stop', () => {
+                const audioBlob = new Blob(recordedChunks);
+                const audioUrl = URL.createObjectURL(audioBlob);
+                audioElement.src = audioUrl;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/upload', true);
+                xhr.setRequestHeader('Content-Type', 'audio/webm');
+                xhr.send(audioBlob);
+            });
+            mediaRecorder.start();
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    stopButton.onclick = () => {
+        mediaRecorder.stop();
+    };
+
+</script>
+</html>
