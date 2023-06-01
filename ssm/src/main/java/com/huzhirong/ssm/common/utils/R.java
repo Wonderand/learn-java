@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.huzhirong.top.ssm.common.utils;
+package com.huzhirong.ssm.common.utils;
 
 import org.apache.http.HttpStatus;
 

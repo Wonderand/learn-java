@@ -1,10 +1,10 @@
-package com.huzhirong.top.ssm.common.interceptor;
+package com.huzhirong.ssm.common.interceptor;
 
 import com.auth0.jwt.exceptions.AlgorithmMismatchException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.huzhirong.top.ssm.common.utils.JWTUtils;
-import com.huzhirong.top.ssm.common.utils.R;
+import com.huzhirong.ssm.common.utils.JWTUtils;
+import com.huzhirong.ssm.common.utils.R;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;

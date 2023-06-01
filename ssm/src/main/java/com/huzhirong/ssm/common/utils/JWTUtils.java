@@ -1,4 +1,4 @@
-package com.huzhirong.top.ssm.common.utils;
+package com.huzhirong.ssm.common.utils;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;

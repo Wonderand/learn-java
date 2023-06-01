@@ -1,6 +1,6 @@
-package com.huzhirong.top.ssm.common.config;
+package com.huzhirong.ssm.common.config;
 
-import com.huzhirong.top.ssm.common.interceptor.JWTInterceptor;
+import com.huzhirong.ssm.common.interceptor.JWTInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

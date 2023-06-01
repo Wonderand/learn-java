@@ -1,25 +1,19 @@
-package com.huzhirong.top.ssm.modules.jwt.controller;
+package com.huzhirong.ssm.modules.admin.controller;
 
-import com.auth0.jwt.exceptions.AlgorithmMismatchException;
-import com.auth0.jwt.exceptions.SignatureVerificationException;
-import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.huzhirong.top.ssm.common.utils.JWTUtils;
-import com.huzhirong.top.ssm.common.utils.R;
-import com.huzhirong.top.ssm.modules.test.mapper.UserMapper;
-import com.huzhirong.top.ssm.modules.test.pojo.User;
-import com.huzhirong.top.ssm.modules.test.service.UserService;
-import jakarta.servlet.http.HttpServletRequest;
+import com.huzhirong.ssm.modules.test.pojo.User;
+import com.huzhirong.ssm.modules.test.service.UserService;
+import com.huzhirong.ssm.common.utils.JWTUtils;
+import com.huzhirong.ssm.common.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.SignatureException;
 import java.util.HashMap;
 
 @Slf4j(topic = "jwt")
 @RestController
 @RequestMapping("/jwt")
-public class JwtController {
+public class LoginController {
 
     @Autowired
     private UserService service;
