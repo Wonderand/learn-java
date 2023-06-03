@@ -1,4 +1,4 @@
-package com.huzhirong.top.ssm.modules.test.pojo;
+package com.huzhirong.ssm.modules.test.pojo;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 import lombok.AllArgsConstructor;

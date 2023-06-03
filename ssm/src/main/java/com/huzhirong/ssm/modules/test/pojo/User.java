@@ -1,4 +1,4 @@
-package com.huzhirong.top.ssm.modules.test.pojo;
+package com.huzhirong.ssm.modules.test.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +14,7 @@ public class User {
 	private String username;
 	private String password;
 	private Date birthday;
+	private String ip;
 
 	public User(int id, String username) {
 		super();

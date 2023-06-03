@@ -1,4 +1,4 @@
-package com.huzhirong.top.ssm;
+package com.huzhirong.ssm;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

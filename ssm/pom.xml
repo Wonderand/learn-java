@@ -15,6 +15,17 @@
     <description>ssm</description>
     <properties>
         <java.version>17</java.version>
+        <spring-boot.version>3.0.0</spring-boot.version>
+        <mysql.version>8.0.26</mysql.version>
+        <mybatis.version>3.5.7</mybatis.version>
+        <fastjson2.version>2.0.33</fastjson2.version>
+        <druid.version>1.2.6</druid.version>
+        <jwt.version>3.11.0</jwt.version>
+        <support.version>5.3.13</support.version>
+        <devtools.version>2.5.1</devtools.version>
+        <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
+        <lombok.version>1.18.22</lombok.version>
+        <httpclient.version>4.4.16</httpclient.version>
     </properties>
     <dependencies>
         <dependency>
@@ -32,39 +43,29 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.0</version>
+            <version>${spring-boot.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatisplus-spring-boot-starter</artifactId>
-            <version>1.0.5</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.baomidou</groupId>-->
+<!--            <artifactId>mybatisplus-spring-boot-starter</artifactId>-->
+<!--            <version>1.0.5</version>-->
+<!--        </dependency>-->
 
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>2.0.17.graal</version>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>${fastjson2.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.jsonwebtoken</groupId>-->
-<!--            <artifactId>jjwt</artifactId>-->
-<!--            <version>0.11.0</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.jsonwebtoken</groupId>-->
-<!--            <artifactId>jjwt-api</artifactId>-->
-<!--            <version>0.11.1</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
-            <version>3.11.0</version>
+            <version>${jwt.version}</version>
         </dependency>
+        <!-- 邮件发送、缓存、事务等 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>5.3.13</version>
+            <version>${support.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -73,19 +74,20 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.2.16</version>
+            <version>${druid.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -100,7 +102,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
-            <version>4.4.16</version>
+            <version>${httpclient.version}</version>
         </dependency>
     </dependencies>
 
