@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.huzhirong.ssm.modules.test.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 @Mapper
 public interface UserMapper {
