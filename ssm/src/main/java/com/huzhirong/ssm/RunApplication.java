@@ -22,7 +22,6 @@ public class RunApplication {
         for (String name : names) {
             System.out.println(name);
         }
-
     }
 
 }
