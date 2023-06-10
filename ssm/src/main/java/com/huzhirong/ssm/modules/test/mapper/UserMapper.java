@@ -13,7 +13,6 @@ public interface UserMapper {
 	public void delete(int id);
 	public List<User> find();
 	public User getUserById(int id);
-	public User login(User user);
 //	public void out(String from,double money);
 //	public void in(String to,double moeny);
 }

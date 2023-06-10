@@ -5,9 +5,6 @@
     <select id="find" parameterType="com.huzhirong.ssm.modules.test.pojo.User" resultType="com.huzhirong.ssm.modules.test.pojo.User">
        select * from sys_user
     </select>
-    <select id="login" parameterType="com.huzhirong.ssm.modules.test.pojo.User" resultType="com.huzhirong.ssm.modules.test.pojo.User">
-        select * from sys_user where username=#{username} and password=#{password}
-    </select>
     <select id="getUserById" resultType="com.huzhirong.ssm.modules.test.pojo.User">
         select * from user where id=#{id}
     </select>
@@ -18,6 +15,6 @@
         delete from user where id=#{id}
     </delete>
     <update id="update">
-       
+
     </update>
 </mapper>

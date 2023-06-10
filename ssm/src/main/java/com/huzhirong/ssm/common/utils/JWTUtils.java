@@ -18,12 +18,12 @@ public class JWTUtils {
      */
     public static String getToken(Integer id,String username) {
         //创建payload
-        HashMap<String, String> payload = new HashMap<>();
+        Map<String, String> payload = new HashMap<>();
         payload.put("id", String.valueOf(id));
         payload.put("username", username);
         //过期时间
         Calendar instance = Calendar.getInstance();
-        instance.add(Calendar.DATE, 1);//默认令牌过期时间为一天
+        instance.add(Calendar.DATE, 7);//默认令牌过期时间为一天
         //创建jwt builder
         JWTCreator.Builder builder = JWT.create();
         //payload

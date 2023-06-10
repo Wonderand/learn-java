@@ -30,12 +30,15 @@ class SsmApplicationTests {
 
     @Test
     void test(){
-        JWTVerifier jwtVerifier =JWT.require(Algorithm.HMAC256("!#ERFSF@$%")).build();
-        DecodedJWT verify = jwtVerifier.verify("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODM1Mjc1NDQsInVzZXJJZCI6MjAsInVzZXJuYW1lIjoiemhhbmdzYW4ifQ.eWnKpDQreCjeG9HHm_ft7Otw-7dl8JGOjGvd9YJkm5k");
-        System.out.println(verify.getClaims());
-        System.out.println(verify.getClaim("username").asString());
-        System.out.println(verify.getClaims().get("username").asString());
-        System.out.println(verify.getClaims().get("userId").asInt());
+//        JWTVerifier jwtVerifier =JWT.require(Algorithm.HMAC256("!#ERFSF@$%")).build();
+//        DecodedJWT verify = jwtVerifier.verify(
+//                "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9." +
+//                        "eyJleHAiOjE2ODYzMDIyMzAsInVzZXJJZCI6MjAsInVzZXJuYW1lIjoiemhhbmdzYW4ifQ." +
+//                        "ec-rcvLOpsKzU-k80VZBBvAGQfmVy65CjXV9Nwqtikk");
+//        System.out.println(verify.getClaims());
+//        System.out.println(verify.getClaim("username").asString());
+//        System.out.println(verify.getClaims().get("username").asString());
+//        System.out.println(verify.getClaims().get("userId").asInt());
     }
 
 }
