@@ -15,7 +15,8 @@ public class CorsConfig implements WebMvcConfigurer {
                 // 拦截所有请求
                 .addPathPatterns("/**")
                 // 放行的请求
-                .excludePathPatterns("/admin/login");
+                .excludePathPatterns("/admin/login")
+                .excludePathPatterns("/admin/info");
                 //.excludePathPatterns("/user/**");
     }
 }

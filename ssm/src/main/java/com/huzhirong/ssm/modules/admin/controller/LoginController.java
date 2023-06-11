@@ -9,12 +9,17 @@ import com.huzhirong.ssm.common.utils.R;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j(topic = "jwt")
 @RestController
 @RequestMapping("/admin")
 public class LoginController {
+
+    @Autowired
+    StringRedisTemplate redisTemplate;
 
     @Autowired
     private LoginService service;
@@ -36,6 +41,12 @@ public class LoginController {
             e.printStackTrace();
             return R.error();
         }
+    }
+
+    @GetMapping("/info")
+    public R info(){
+        Long haha = redisTemplate.opsForValue().increment("haha");
+        return R.ok().put("haha",haha);
     }
 
 }
