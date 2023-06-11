@@ -1,8 +1,11 @@
 package com.huzhirong.ssm;
 
+import com.huzhirong.ssm.modules.test.pojo.Pig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 /**
  *  @SpringBootApplication 来标注一个主程序类，说明这是一个Spring Boot应用
@@ -22,6 +25,8 @@ public class RunApplication {
         for (String name : names) {
             System.out.println(name);
         }
+        Object pig = run.getBean("pig");
+        System.out.println(pig);
     }
 
 }
