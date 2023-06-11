@@ -30,7 +30,7 @@ public class JWTUtils {
         payload.forEach((k,v)->{
             builder.withClaim(k,v);
         });
-        String token = builder.withExpiresAt(instance.getTime())//指定令牌过期时间
+        String token = builder.withIssuedAt(instance.getTime()) //指定令牌过期时间
                 .sign(Algorithm.HMAC256(SING));//签名
 
         return token;

@@ -1,8 +1,6 @@
 package com.huzhirong.ssm.common.interceptor;
 
-import com.auth0.jwt.exceptions.AlgorithmMismatchException;
-import com.auth0.jwt.exceptions.SignatureVerificationException;
-import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.huzhirong.ssm.common.utils.JWTUtils;
 import com.huzhirong.ssm.common.utils.R;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,19 +15,11 @@ public class JWTInterceptor implements HandlerInterceptor {
         String token = request.getHeader("token");
         // 校验令牌
         try {
-            JWTUtils.verify(token);
+           JWTUtils.verify(token);
+
             response.setStatus(200);
             response.setContentType("application/json;charset=UTF-8");
-//            response.getWriter().println(R.ok().put("msg", "请求成功"));
             return true;
-        } catch (SignatureVerificationException e) {
-            e.printStackTrace();
-        } catch (TokenExpiredException e) {
-            e.printStackTrace();
-        } catch (AlgorithmMismatchException e) {
-            e.printStackTrace();
-        } catch (NullPointerException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
