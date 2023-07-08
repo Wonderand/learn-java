@@ -1,6 +1,6 @@
 package thread;
 
-public class test1  implements Runnable {
+public class implRunnable implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < 1000; i++) {
@@ -11,6 +11,6 @@ public class test1  implements Runnable {
     }
 
     public static void start() {
-        new test1().start();
+        new implRunnable().start();
     }
 }
