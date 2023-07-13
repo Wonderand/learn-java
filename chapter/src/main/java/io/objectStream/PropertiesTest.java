@@ -2,6 +2,7 @@ package io.objectStream;
 
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Properties;
 public class PropertiesTest {
     public static void main(String[] args) throws Exception{
         //wrfile();
-//        refile();
+        refile(new FileReader("E:\\jdk17\\test\\chapter\\src\\main\\resources\\a.txt"));
     }
     /**
      * Properties集合的load方法
@@ -18,11 +19,15 @@ public class PropertiesTest {
      *  流对象读取文件中的键值对,保存到集合
      * @throws Exception
      */
-    public static Properties refile(FileReader fr) throws Exception{
+    public static Properties refile(FileReader fr) {
        // FileReader fr = new FileReader("E:\\jdk17\\test\\chapter\\src\\main\\resources\\a.txt");
         Properties pro = new Properties();
-        pro.load(fr);
-        fr.close();
+        try {
+            pro.load(fr);
+            fr.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println(pro);
         return pro;
     }

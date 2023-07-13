@@ -33,19 +33,32 @@ public class Util {
      * static void writeStringToFile(File src,String date)
      * 将字符串直接写到文件中
      */
-    public static void writeStringToFile() throws IOException {
-        FileUtils.writeStringToFile(new File("d:\\demo\\a.txt"), "hello world");
+    public static boolean writeStringToFile(String toPath, String date) {
+        Boolean isOk = true;
+        try {
+            FileUtils.writeStringToFile(new File(toPath), date);
+        } catch (IOException e) {
+            isOk = false;
+            throw new RuntimeException(e);
+        }
         System.out.println("FileUtils writeStringToFile");
+        return isOk;
     }
     /**
      * FileUtis工具类方法
      * static String readFileToString(File src)
      * 读取文本,返回字符串
      */
-    public static void readFileToString() throws IOException {
-        String s = FileUtils.readFileToString(new File("d:\\demo\\a.txt"));
-        System.out.println(s);
-        System.out.println("FileUtils readFileToString");
+    public static String readFileToString (String src){
+        String data = null;
+        try {
+            data = FileUtils.readFileToString(new File(src));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+//        System.out.println(data);
+//        System.out.println("FileUtils readFileToString");
+        return data;
     }
     /**
      * FileUtis工具类方法
