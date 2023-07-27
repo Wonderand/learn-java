@@ -90,7 +90,13 @@ public class PdfUtils {
 //        /**
 //         * PDF设置密码与文件权限
 //         */
-//        createPdf7(BASEPATH + "test7.pdf");
+        createPdf7(BASEPATH + "测试权限.pdf");
+//        String src = "E:/upload_pdfjs/test/测试权限.pdf";
+//        String dest = "E:/upload_pdfjs/test/测试权限1.pdf";
+//        PdfReader reader = new PdfReader(src);
+//        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(dest));
+//        AcroFields form = stamper.getAcroFields();
+//        System.out.println(form.getFields());
 //        /**
 //         * 创建PDF时添加水印
 //         */
@@ -491,9 +497,11 @@ public class PdfUtils {
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
 
         //用户密码
-        String userPassword = "123456";
+//        String userPassword = "123456";
+        String userPassword = null;
         //拥有者密码
-        String ownerPassword = "lt";
+//        String ownerPassword = "lt";
+        String ownerPassword = null;
 
         /**
          * 1. 如果是读取本地pdf文件则可以用 pdfStamper.setEncryption方法
@@ -506,6 +514,8 @@ public class PdfUtils {
          *          PdfWriter.ALLOW_MODIFY_CONTENTS：允许编辑内容
          *          PdfWriter.ALLOW_COPY：允许复制
          *          PdfWriter.ALLOW_MODIFY_ANNOTATIONS：允许编辑注释
+         *          //允许文档组合
+         *          PdfWriter.ALLOW_ASSEMBLY：允许文档组合
          *          PdfWriter.ALLOW_FILL_IN：允许填充表单（128位加密）
          *          PdfWriter.ALLOW_SCREENREADERS：允许用户提取文本和图形以供易访问性设备使用（128位加密）
          *          PdfWriter.ALLOW_ASSEMBLY：允许用户插入、删除和旋转页面和添加书签（128位加密）
@@ -517,10 +527,14 @@ public class PdfUtils {
          *          PdfWriter.ENCRYPTION_AES_256
          */
         // 赋值密码、权限、加密方式
-        writer.setEncryption(userPassword.getBytes(), ownerPassword.getBytes()
-                ,  PdfWriter.ALLOW_PRINTING | PdfWriter.ALLOW_MODIFY_ANNOTATIONS | PdfWriter.ALLOW_MODIFY_CONTENTS  | PdfWriter.ALLOW_FILL_IN
-//                   | PdfWriter.ALLOW_COPY | PdfWriter.ALLOW_SCREENREADERS | PdfWriter.ALLOW_ASSEMBLY | PdfWriter.ALLOW_DEGRADED_PRINTING
+//        writer.setEncryption(userPassword.getBytes(), ownerPassword.getBytes()
+//                ,  PdfWriter.ALLOW_PRINTING | PdfWriter.ALLOW_MODIFY_ANNOTATIONS | PdfWriter.ALLOW_MODIFY_CONTENTS  | PdfWriter.ALLOW_FILL_IN
+////                   | PdfWriter.ALLOW_COPY | PdfWriter.ALLOW_SCREENREADERS | PdfWriter.ALLOW_ASSEMBLY | PdfWriter.ALLOW_DEGRADED_PRINTING
+//                , PdfWriter.ENCRYPTION_AES_128);
+        writer.setEncryption(null, null
+                ,  PdfWriter.ALLOW_PRINTING|PdfWriter.ALLOW_FILL_IN|PdfWriter.ALLOW_SCREENREADERS|PdfWriter.ALLOW_ASSEMBLY
                 , PdfWriter.ENCRYPTION_AES_128);
+
         // 打开文件
         document.open();
         // 添加内容
