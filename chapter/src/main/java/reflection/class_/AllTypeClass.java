@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 /**
  * 哪些类型有Class对象
+ *
+ * 反射是动态加载的，只有在动态加载时才知道要加载哪个类，如果运行时不用该类，就不会加载该类。
+ * 编译阶段即使没有该类也不会报错
+ *
+ * 直接new一个对象，是静态加载类，编译时就要知道要加载哪个类
  */
 public class AllTypeClass {
 
