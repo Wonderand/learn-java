@@ -4,10 +4,10 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.UUID;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.Date;
 
 public class test {
 
@@ -47,6 +47,64 @@ public class test {
             bw.newLine();
         }
         bw.close();
+    }
+
+    /**
+     * 测试jdbc驱动
+     * @param
+     * @param
+     */
+    @Test
+    public void test2() {
+        try {
+            // 1. 加载JDBC驱动程序
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            // 2. 创建数据库连接
+            Connection conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/yitizi", "root", "123");
+            // 3. 关闭自动提交
+            conn.setAutoCommit(false);
+            // 4. 创建PreparedStatement对象
+            String sql = "INSERT INTO yiti (variant_characters_img, search) VALUES ( ?, ?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            File file = new File("D:\\yitizi\\yitizi\\sword");
+            // 获取文件夹下的所有jpg文件路径
+            ArrayList<String> jpgFiles = new ArrayList<>();
+            getJpgFiles(file.getAbsolutePath(),jpgFiles);
+
+//            for (int i = 0; i < jpgFiles.size(); i++) {
+////            System.out.println(jpgFiles.get(i));
+////                bw.write(jpgFiles.get(i));
+////                bw.newLine();
+//            }
+
+            // 5. 执行批处理
+            int batchSize = 1000;
+            for (int i = 0; i < jpgFiles.size(); i++) {
+                String base64 = base64Img(jpgFiles.get(i));
+                pstmt.setString(1, base64);
+                pstmt.setString(2, "Key" + i);
+                pstmt.addBatch();
+
+                if (i % batchSize == 0) {
+                    if (i == 0){
+                        continue;
+                    }
+                    pstmt.executeBatch();
+                    conn.commit();
+                }
+                System.out.println("插入第" + i + "条数据");
+            }
+            // 6. 处理剩余的数据
+            pstmt.executeBatch();
+            conn.commit();
+            // 7. 关闭连接
+            pstmt.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public static void getJpgFiles(String path, ArrayList<String> jpgFiles) {
