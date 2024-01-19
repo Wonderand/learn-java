@@ -4,10 +4,15 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.Date;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class test {
 
@@ -56,6 +61,7 @@ public class test {
      */
     @Test
     public void test2() {
+        long start = System.currentTimeMillis();
         try {
             // 1. 加载JDBC驱动程序
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -65,36 +71,32 @@ public class test {
             // 3. 关闭自动提交
             conn.setAutoCommit(false);
             // 4. 创建PreparedStatement对象
-            String sql = "INSERT INTO yiti (variant_characters_img, search) VALUES ( ?, ?)";
+            String sql = "INSERT INTO ycan_yitizi (base64,key_index,path,create_time) VALUES ( ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
             File file = new File("D:\\yitizi\\yitizi\\sword");
             // 获取文件夹下的所有jpg文件路径
             ArrayList<String> jpgFiles = new ArrayList<>();
             getJpgFiles(file.getAbsolutePath(),jpgFiles);
-
-//            for (int i = 0; i < jpgFiles.size(); i++) {
-////            System.out.println(jpgFiles.get(i));
-////                bw.write(jpgFiles.get(i));
-////                bw.newLine();
-//            }
-
             // 5. 执行批处理
             int batchSize = 1000;
             for (int i = 0; i < jpgFiles.size(); i++) {
                 String base64 = base64Img(jpgFiles.get(i));
+                String s = jpgFiles.get(i);
                 pstmt.setString(1, base64);
                 pstmt.setString(2, "Key" + i);
+                pstmt.setString(3, s);
+                pstmt.setString(4, LocalDateTime.now().toString());
                 pstmt.addBatch();
 
                 if (i % batchSize == 0) {
                     if (i == 0){
                         continue;
                     }
+                    System.out.println("插入第" + i + "条数据");
                     pstmt.executeBatch();
                     conn.commit();
                 }
-                System.out.println("插入第" + i + "条数据");
             }
             // 6. 处理剩余的数据
             pstmt.executeBatch();
@@ -102,9 +104,18 @@ public class test {
             // 7. 关闭连接
             pstmt.close();
             conn.close();
+            System.out.printf(">> 总计花费: %dms\n", System.currentTimeMillis() - start);
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    /**
+     * base64toimage
+     */
+    @Test
+    public void test3(){
+        base64ToImg("E:\\jdk17\\test\\chapter\\src\\main\\resources\\1.txt","E:\\jdk17\\test\\chapter\\src\\main\\resources\\3.jpg");
     }
 
     public static void getJpgFiles(String path, ArrayList<String> jpgFiles) {
@@ -124,6 +135,40 @@ public class test {
         }
     }
 
+    /**
+     * stream流读取文件
+     * @param
+     * @return
+     */
+    @Test
+    public void getFiles() throws IOException {
+        long start = System.currentTimeMillis();
+//        Path path = Paths.get("D:\\yitizi\\yitizi\\sword");
+//        try (Stream<Path> walk = Files.walk(path)) {
+//            List<String> result = walk.filter(Files::isRegularFile)
+//                    .map(Path::toString)
+//                    .filter(s -> s.endsWith(".jpg"))
+//                    .collect(Collectors.toList());
+////            result.forEach(System.out::println);
+//            BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\jdk17\\test\\chapter\\src\\main\\file\\path1.txt", true));
+//            for (String s : result) {
+//                writer.write(s);
+//                writer.newLine();
+//            }
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        ArrayList<String> list = new ArrayList<>();
+        getJpgFiles("D:\\yitizi\\yitizi\\sword",list);
+        BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\jdk17\\test\\chapter\\src\\main\\file\\path1.txt", true));
+        for (int i = 0; i < list.size(); i++) {
+            writer.write(list.get(i));
+            writer.newLine();
+        }
+        writer.close();
+        System.out.printf(">> 总计花费: %dms\n", System.currentTimeMillis() - start);
+    }
     //
     public static String base64Img(String filePath){
         File file = new File(filePath);
