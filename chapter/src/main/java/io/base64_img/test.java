@@ -1,6 +1,10 @@
 package io.base64_img;
 
 import org.apache.commons.io.FileUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.junit.Test;
 
 import java.io.*;
@@ -45,7 +49,7 @@ public class test {
 //        bw.close();
         File file = new File("D:\\yitizi\\yitizi\\sword");
         ArrayList<String> jpgFiles = new ArrayList<>();
-        getJpgFiles(file.getAbsolutePath(),jpgFiles);
+        getJpgFiles(file.getAbsolutePath(), jpgFiles);
         for (int i = 0; i < jpgFiles.size(); i++) {
 //            System.out.println(jpgFiles.get(i));
             bw.write(jpgFiles.get(i));
@@ -56,6 +60,7 @@ public class test {
 
     /**
      * 测试jdbc驱动
+     *
      * @param
      * @param
      */
@@ -77,7 +82,7 @@ public class test {
             File file = new File("D:\\yitizi\\yitizi\\sword");
             // 获取文件夹下的所有jpg文件路径
             ArrayList<String> jpgFiles = new ArrayList<>();
-            getJpgFiles(file.getAbsolutePath(),jpgFiles);
+            getJpgFiles(file.getAbsolutePath(), jpgFiles);
             // 5. 执行批处理
             int batchSize = 1000;
             for (int i = 0; i < jpgFiles.size(); i++) {
@@ -90,7 +95,7 @@ public class test {
                 pstmt.addBatch();
 
                 if (i % batchSize == 0) {
-                    if (i == 0){
+                    if (i == 0) {
                         continue;
                     }
                     System.out.println("插入第" + i + "条数据");
@@ -114,8 +119,8 @@ public class test {
      * base64toimage
      */
     @Test
-    public void test3(){
-        base64ToImg("E:\\jdk17\\test\\chapter\\src\\main\\resources\\1.txt","E:\\jdk17\\test\\chapter\\src\\main\\resources\\3.jpg");
+    public void test3() {
+        base64ToImg("E:\\jdk17\\test\\chapter\\src\\main\\resources\\1.txt", "E:\\jdk17\\test\\chapter\\src\\main\\resources\\3.jpg");
     }
 
     public static void getJpgFiles(String path, ArrayList<String> jpgFiles) {
@@ -127,7 +132,44 @@ public class test {
                     getJpgFiles(file.getAbsolutePath(), jpgFiles);
                 } else {
                     String fileName = file.getName();
-                    if (fileName.endsWith(".jpg")) {
+                    if (fileName.endsWith(".suffix")) {
+                        jpgFiles.add(file.getAbsolutePath());
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 获取文件夹下的所有html文件
+     * 读取到的html文件中的a标签的值
+     */
+    @Test
+    public void test4() throws Exception {
+
+        ArrayList<String> list = new ArrayList<>();
+        getFiles("D:\\yitizi\\yitizi\\yitic\\wc", list, ".htm");
+        for (int i = 0; i < list.size(); i++) {
+            File s = new File(list.get(i));
+            Document doc = Jsoup.parse(s, "Big5", "");
+            Elements links = doc.select("a[target=down]");
+            for (Element link : links) {
+                System.out.println(i + link.text());
+            }
+        }
+    }
+
+
+    public static void getFiles(String path, ArrayList<String> jpgFiles, String suffix) {
+        File folder = new File(path);
+        File[] files = folder.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    getFiles(file.getAbsolutePath(), jpgFiles, suffix);
+                } else {
+                    String fileName = file.getName();
+                    if (fileName.endsWith(suffix)) {
                         jpgFiles.add(file.getAbsolutePath());
                     }
                 }
@@ -137,6 +179,7 @@ public class test {
 
     /**
      * stream流读取文件
+     *
      * @param
      * @return
      */
@@ -160,7 +203,7 @@ public class test {
 //            e.printStackTrace();
 //        }
         ArrayList<String> list = new ArrayList<>();
-        getJpgFiles("D:\\yitizi\\yitizi\\sword",list);
+        getJpgFiles("D:\\yitizi\\yitizi\\sword", list);
         BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\jdk17\\test\\chapter\\src\\main\\file\\path1.txt", true));
         for (int i = 0; i < list.size(); i++) {
             writer.write(list.get(i));
@@ -169,23 +212,24 @@ public class test {
         writer.close();
         System.out.printf(">> 总计花费: %dms\n", System.currentTimeMillis() - start);
     }
+
     //
-    public static String base64Img(String filePath){
+    public static String base64Img(String filePath) {
         File file = new File(filePath);
 
-        try(FileInputStream fileInputStream = new FileInputStream(file)) {
+        try (FileInputStream fileInputStream = new FileInputStream(file)) {
             byte[] bytes = new byte[(int) file.length()];
             fileInputStream.read(bytes);
             String img = Base64.getEncoder().encodeToString(bytes).toString();
             return img;
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return "";
     }
 
     //base64转图片
-    public static void base64ToImg(String bast64filePath,String imgPath){
+    public static void base64ToImg(String bast64filePath, String imgPath) {
         // 解密
         try {
             // 读取base64image文件
