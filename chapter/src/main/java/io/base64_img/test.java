@@ -148,15 +148,28 @@ public class test {
     public void test4() throws Exception {
 
         ArrayList<String> list = new ArrayList<>();
-        getFiles("D:\\yitizi\\yitizi\\yitic\\wc", list, ".htm");
+        BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\jdk17\\test\\chapter\\src\\main\\file\\filename.txt", true));
+        BufferedWriter fontwriter = new BufferedWriter(new FileWriter("E:\\jdk17\\test\\chapter\\src\\main\\file\\filename1.txt", true));
+
+        getFiles("D:\\yitizi\\yitizi\\yitin\\wn", list, ".htm");
         for (int i = 0; i < list.size(); i++) {
             File s = new File(list.get(i));
             Document doc = Jsoup.parse(s, "Big5", "");
             Elements links = doc.select("a[target=down]");
             for (Element link : links) {
-                System.out.println(i + link.text());
+                if (link.text() == "") {
+                    System.out.println(link.text() + s.getAbsolutePath());
+                    writer.write(s.getAbsolutePath() +":"+ (i + 18321));
+                    writer.newLine();
+                } else {
+                    System.out.println(i + link.text());
+                    fontwriter.write(link.text() + ":" + (i + 13075));
+                    fontwriter.newLine();
+                }
             }
         }
+        writer.close();
+        fontwriter.close();
     }
 
 
