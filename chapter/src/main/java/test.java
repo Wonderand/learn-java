@@ -8,9 +8,18 @@ public class test {
 //        for (int anInt : ints) {
 //            System.out.println(anInt);
 //        }
-        int[] ints = twoSum(new int[]{2, 7, 11, 15}, 9);
-        System.out.println(Arrays.toString(ints));
-
+//        int[] ints = twoSum(new int[]{2, 7, 11, 15}, 9);
+//        System.out.println(Arrays.toString(ints));
+        try {
+            System.out.println("try");
+            System.out.println(1 / 0);
+        } catch (Exception e) {
+            System.out.println("catch");
+            System.exit(0);
+            e.printStackTrace();
+        } finally {
+            System.out.println("finally");
+        }
     }
 
     public static int[] splitNumber(int n) {
