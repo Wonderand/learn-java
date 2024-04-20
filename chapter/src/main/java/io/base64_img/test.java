@@ -1,6 +1,7 @@
 package io.base64_img;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -148,22 +149,23 @@ public class test {
     public void test4() throws Exception {
 
         ArrayList<String> list = new ArrayList<>();
-        BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\jdk17\\test\\chapter\\src\\main\\file\\filename.txt", true));
-        BufferedWriter fontwriter = new BufferedWriter(new FileWriter("E:\\jdk17\\test\\chapter\\src\\main\\file\\filename1.txt", true));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\jdk17\\test\\chapter\\src\\main\\file\\异体字cn.txt", true));
+        BufferedWriter fontwriter = new BufferedWriter(new FileWriter("E:\\jdk17\\test\\chapter\\src\\main\\file\\手写字cn.txt", true));
 
-        getFiles("D:\\yitizi\\yitizi\\yitin\\wn", list, ".htm");
+        getFiles("D:\\yitizi\\yitizi\\yitic\\wc", list, ".htm");
         for (int i = 0; i < list.size(); i++) {
             File s = new File(list.get(i));
             Document doc = Jsoup.parse(s, "Big5", "");
             Elements links = doc.select("a[target=down]");
+//            Elements links = doc.select("a[border=1]");
             for (Element link : links) {
-                if (link.text() == "") {
+                if (StringUtils.isBlank(link.text())) {
                     System.out.println(link.text() + s.getAbsolutePath());
-                    writer.write(s.getAbsolutePath() +":"+ (i + 18321));
+                    writer.write(s.getAbsolutePath() +":"+ (i + 1));
                     writer.newLine();
                 } else {
                     System.out.println(i + link.text());
-                    fontwriter.write(link.text() + ":" + (i + 13075));
+                    fontwriter.write(link.text() + ":" + (i + 1)+":"+s.getAbsolutePath());
                     fontwriter.newLine();
                 }
             }
