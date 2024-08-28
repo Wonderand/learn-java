@@ -7,6 +7,7 @@ import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
 import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
 import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
+import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
@@ -75,7 +76,7 @@ public class PdfToWord {
         Writer docWriter = null;
         try {
 
-            pdf = PDDocument.load(new File(pdfPath));
+            pdf = Loader.loadPDF(new File(pdfPath));
             int pagenumber = pdf.getNumberOfPages();
             String pdfFileName = pdfPath.substring(pdfPath.lastIndexOf("/") + 1, pdfPath.lastIndexOf("."));
             String docFileName = pdfFileName + ".doc";

@@ -3,10 +3,10 @@ package io.pdf;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.coobird.thumbnailator.Thumbnails;
 import org.apache.commons.imaging.ImageInfo;
 import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.Imaging;
+import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
@@ -48,7 +48,7 @@ public class test {
         String targetFolderPath = "E:\\新建文件夹\\image\\compressed";
 
         // 图片所在目录路径
-        String imageFolderPath = "D:/path/to/your/images";
+        String imageFolderPath = "E:\\jdk17\\test\\chapter\\src\\main\\resources\\";
 
         File folder = new File(imageFolderPath);
         if (folder.exists() && folder.isDirectory()) {
@@ -77,13 +77,6 @@ public class test {
         } else {
             System.out.println("指定的路径不是有效的目录");
         }
-//        try {
-//            FileOutputStream fos = new FileOutputStream(url);
-//            Zkrpdf(fos);
-//            //pdftest(fos);
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
     /**
@@ -160,7 +153,7 @@ public class test {
     public static void convertPdfPagesToImages(String pdfFilePath, String outputDirectory) throws IOException {
         // 加载PDF文档
         File pdfFile = new File(pdfFilePath);
-        PDDocument document = PDDocument.load(pdfFile);
+        PDDocument document = Loader.loadPDF(pdfFile);
 
         try {
             // 创建PDF渲染器
