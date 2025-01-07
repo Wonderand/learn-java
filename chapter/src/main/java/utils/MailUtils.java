@@ -1,8 +1,9 @@
 package utils;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import com.sun.mail.util.MailSSLSocketFactory;
+import jakarta.mail.*;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 import java.util.Properties;
 
 /**
@@ -22,12 +23,18 @@ public final class MailUtils {
     public static boolean sendMail(String to, String text, String title){
         try {
             final Properties props = new Properties();
+
+            // QQ邮箱发送，需要进行SSL加密
+            MailSSLSocketFactory sf = new MailSSLSocketFactory();
+            sf.setTrustAllHosts(true);
+            props.put("mail.smtp.ssl.enable","true");
+            props.put("mail.smtp.ssl.socketFactory",sf);
+
             props.put("mail.smtp.auth", "true");
 //            注意发送邮件的方法中，发送给谁的，发送给对应的app，※
 //            要改成对应的app。扣扣的改成qq的，网易的要改成网易的。※
 //            props.put("mail.smtp.host", "smtp.qq.com");
             props.put("mail.smtp.host", "smtp.qq.com");
-
             // 发件人的账号
             props.put("mail.user", USER);
             //发件人的密码
