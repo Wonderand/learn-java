@@ -1,5 +1,0 @@
-#save data
-#Thu May 11 15:08:12 CST 2023
-name=zhangsan
-age=18
-email=1234567@163.com
