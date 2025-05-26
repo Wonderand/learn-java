@@ -1,4 +1,4 @@
-package thread.demo;
+package thread.a2threadcase2;
 
 public class MyRun implements Runnable{
 

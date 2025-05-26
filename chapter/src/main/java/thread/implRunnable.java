@@ -11,6 +11,8 @@ public class implRunnable implements Runnable {
     }
 
     public static void start() {
-        new implRunnable().start();
+        // 创建线程并启动
+        Thread thread = new Thread(new implRunnable());
+        thread.start();
     }
 }
