@@ -1,3 +1,5 @@
+package DataStructuresAndAlgorithms.算法;
+
 import java.util.Arrays;
 
 public class mianshi {
